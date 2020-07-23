@@ -70,7 +70,7 @@ function runSearch() {
         break;
 
       case "Update employee":
-        update();
+        URole();
         break;
       }
     });
@@ -169,7 +169,6 @@ function Vdepart() {
         runSearch();
       });
       
-      console.log(table);
     }
 
 function Vrole() {
@@ -184,7 +183,6 @@ function Vrole() {
       runSearch();
     });
     
-    console.log(table);
 }
 
 function Vemployee() {
@@ -199,5 +197,33 @@ function Vemployee() {
       runSearch();
     });
     
-    console.log(table);
+}
+function URole(){
+    inquirer
+    .prompt([
+        {
+            name: "name",
+            type: "input",
+            message: "Who would you like to update?"
+          },
+          {
+              name: "updateRole",
+              type: "input",
+              message: "What role would you like to update them to?"
+          }
+    ]).then(function(answer){
+        
+        var query = "UPDATE employee SET role_id = ? WHERE first_name= ?";
+        connection.query(query,[answer.updateRole, answer.name] ,function(err, res) {
+            if (err) throw err;
+
+          // var user = res[0].name;
+          console.log(answer)
+            Vemployee();
+          runSearch();
+    })
+
+    });
+
+  
 }
