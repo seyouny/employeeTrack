@@ -157,13 +157,47 @@ function Aemployee(addSet) {
     }
 
 function Vdepart() {
-return;
-}
+
+      var query = "SELECT * FROM department";
+      connection.query(query, function(err, res) {
+          if (err) throw err;
+
+        // var user = res[0].name;
+        const table = cTable.getTable(res);
+        console.log(table)
+
+        runSearch();
+      });
+      
+      console.log(table);
+    }
 
 function Vrole() {
-return;
+    var query = "SELECT * FROM role";
+    connection.query(query, function(err, res) {
+        if (err) throw err;
+
+      // var user = res[0].name;
+      const table = cTable.getTable(res);
+      console.log(table)
+
+      runSearch();
+    });
+    
+    console.log(table);
 }
 
 function Vemployee() {
-return;
+    var query = "SELECT * FROM employee";
+    connection.query(query, function(err, res) {
+        if (err) throw err;
+
+      // var user = res[0].name;
+      const table = cTable.getTable(res);
+      console.log(table)
+
+      runSearch();
+    });
+    
+    console.log(table);
 }
